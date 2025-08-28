@@ -1,0 +1,32 @@
+\usepackage{amsthm}                    % Para adcionar Teoremas
+\usepackage{thmtools}                  % Front end para amsthm (\declaretheorem)
+
+% Aqui eu utilizei o pacote de teoremas para criar também a funções para axiomas
+% leis físicas, e definições matemáticas
+\declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
+\declaretheorem[style=plain,name=Teorema,qed=\textnormal{\textemdash}]{teorema}
+\declaretheorem[style=plain,name=Axioma,qed=\textnormal{\textemdash}]{axioma}
+\declaretheorem[style=plain,name=Lei,qed=\textnormal{\textemdash}]{lei}
+
+\declaretheorem[style=definition,name=Demonstração,qed={Q.E.D.}]{prova}
+\declaretheorem[style=definition,name=Exemplo,parent=chapter,qed=\textemdash]{exemplo}
+
+\usepackage[most]{tcolorbox}
+
+\tcolorboxenvironment{definicao}{
+   breakable,
+   colback=MidnightBlue!5!white,
+   colframe=MidnightBlue!75!black,
+}
+
+\tcolorboxenvironment{teorema}{
+   breakable,
+   colback=Bittersweet!5!white,
+   colframe=Bittersweet!75!black,
+}
+
+\tcolorboxenvironment{exemplo}{
+   breakable,
+   colback=Plum!5!white,
+   colframe=Plum!75!black,
+}

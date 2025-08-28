@@ -1,0 +1,57 @@
+\chapter{Sistemas dinâmicos}
+\label{cap:dinamicos}
+
+\begin{definicao}
+   Um sistema dinâmico é uma tripla ordenada
+   $(\mathbb{T}, \mathcal{E}, \Phi)$
+   onde $\mathbb{T}$ é um monoide aditivo,
+   $\mathcal{E}$ é um conjunto não vazio e
+   $\Phi$ é uma função
+   $$
+      \Phi: I \times \mathcal{E} \rightarrow \mathcal{E},
+   $$
+   com $I \subset \mathbb{T}$, tal que
+   \begin{itemize}
+      \item $\Phi(0, x) = x$,
+      \item $\Phi(t_1, \Phi(t_0, x)) = \Phi(t_1 + t_0, x)$,
+   \end{itemize}
+   para todos $x\in\mathcal{E}$, $(t_0, t_1)\in I \times I$.
+\end{definicao}
+
+O conjunto $\mathcal{E}$ é comumente chamado de espaço de estados
+enquanto que a função $\Phi$ é chamada de função de evolução.
+Note que a função de evolução é uma ação de monoide sobre espaço de estados.
+
+Em muitos casos a função de evolução é, \textit{a priori},
+desconhecida.
+Entretanto, nesses casos a função de evolução deve ser obtida a partir
+estruturas algébricas ou geométricas adicionadas ao modelo.
+Por exemplo, se $\mathbb{T} = \mathbb{R}$ e se
+um atlas diferenciável mapeia o espaço de estados $\mathcal{E}$
+então pode-se buscar por um campo vetorial
+$X:\mathcal{E} \rightarrow T(\mathcal{E})$
+tal que a função de evolução seja o seu escoo, definindo uma
+equação da forma
+
+\begin{equation}
+   \frac{d}{dt} \Phi_x(t) = X \circ \Phi_x(t),
+\end{equation}
+
+\noindent
+onde $\Phi_x: t \mapsto \Phi(t, x)$.
+Um outro exemplo (que pode ser interpretado como a expressão local do anterior),
+é quando $\mathcal{E}$ possui uma estrutura vetorial,
+nesse caso pode-se buscar um operador
+$\hat{D}: \mathcal{E} \rightarrow \mathcal{E}$
+tal que
+
+\begin{equation}
+   \frac{d}{dt} \Phi_x(t) = \hat{D} \circ \Phi_x(t).
+\end{equation}
+
+\noindent
+Essas equações são chamadas de \textit{equações diferenciais ordinárias},
+o problema de encontrar a função de evolução a partir de tais equações
+se chama \textit{problema de valor inicial},
+pois está sujeito à condição de que $\Phi_x(0) = x$,
+onde $x$ é um dado estado inicial.

@@ -1,0 +1,165 @@
+\chapter{Formalismo matemático}
+
+\section{Equações de onda}
+
+Ao analisar equações como as do oscilador harmônico,
+as quanções de onda numa corda, ondas císmicas, as equações de Maxwell,
+a equação de Schrödinger, dentre outras,
+podemos notar similaridades nessas equações que nos levam a descrever
+de uma maneira mais geral a álgebra das equações de ondas.
+
+O modelo físico para fenômenos ondulatórios onde se observa
+o princípio da superposição consiste de um sistema dinâmico
+$(\mathbb{R}, \mathcal{E}, \Phi)$
+-- ver apêndice \ref{cap:dinamicos} --,
+onde o espaço de estados $\mathcal{E}$ é um espaço vetorial%
+\footnote{Necessariamente topológico e localmente convexo},
+escalares podem ser tanto números reais como complexos,
+e a função de evolução $\Phi$ pode ser inferida a partir
+de um operador linear
+$\hat{D}:\mathcal{E}\rightarrow\mathcal{E}$ através da equação
+
+\begin{equation}\label{eq:EDO}
+   \frac{d}{dt} \Phi_{x_0}(t) = \hat{D} \circ \Phi_{x_0}(t) + x_s,
+\end{equation}
+
+\noindent
+onde ${x_0}\in\mathcal{E}$ é o estado inicial do ondulante
+e $x_s\in\mathcal{E}$ é um termo de fonte
+que, para o interesse do presente trabalho, será sempre o vetor nulo.
+O operador linear $\hat{D}$ deve ser
+antihermitiano com respeito a algum produto interno, isto é,
+se $\langle\cdot,\cdot\rangle$ denota tal produto interno, então deve-se ter
+
+\begin{equation}
+   \langle \hat{D}(x), y\rangle = -\langle x, \hat{D}(y)\rangle.
+\end{equation}
+
+Dessa simples estrutura vêm propriedades físicas muito relevantes
+como a natureza oscilatória do ondulante e a conservação de energia.
+Os seguintes teoremas enunciam tais propriedades de maneira mais formal.
+
+\begin{teorema}
+   Se o espaço de estados $\mathcal{E}$
+   é um espaço de Hilbert com respeito a algum produto interno
+   $\langle\cdot,\cdot\rangle$
+   e a função de evolução satisfaz à equação \ref{eq:EDO}
+   para algum operador linear antihermitiano $\hat{D}$
+   então
+   $$
+      \frac{d}{dt} \langle \Phi_{x_0}(t), \Phi_{x_0}(t) \rangle = 0.
+   $$
+\end{teorema}
+
+\begin{prova}
+   Basta calcular:
+   $$\begin{aligned}
+      \frac{d}{dt} \langle \Phi_{x_0}(t), \Phi_{x_0}(t) \rangle
+      &= \left\langle \frac{d}{dt} \Phi_{x_0}(t), \Phi_{x_0}(t) \right\rangle +
+         \left\langle \Phi_{x_0}(t), \frac{d}{dt} \Phi_{x_0}(t) \right\rangle \\
+      &= \left\langle \hat{D} \circ \Phi_{x_0}(t), \Phi_{x_0}(t) \right\rangle +
+         \left\langle \Phi_{x_0}(t), \hat{D} \circ \Phi_{x_0}(t) \right\rangle \\
+      &= \left\langle \hat{D} \circ \Phi_{x_0}(t), \Phi_{x_0}(t) \right\rangle -
+         \left\langle \hat{D} \circ \Phi_{x_0}(t), \Phi_{x_0}(t) \right\rangle \\
+      &= 0 \qedhere
+   \end{aligned}$$
+\end{prova}
+
+\begin{teorema}
+   \textit{a)}
+      Se o corpo for o conjunto dos reais, $\mathbb{R}$,
+      então todo autovalor de $\hat{D}$ é nulo.
+   \textit{b)}
+      Se o corpo de $\mathcal{E}$ for o conjunto dos complexos, $\mathbb{C}$,
+      então todo autovalor de $\hat{D}$ possui parte real nula,
+      isto é, é puramente imaginário.
+\end{teorema}
+
+\begin{prova}
+   Suponha que $\lambda$ é um autovalor de $\hat{D}$ associado ao autovetor
+   unitário $\varphi$, então
+   $
+      {\lambda} =
+      {\langle \hat{D}(\varphi), \varphi \rangle} =
+      {- \langle \varphi, \hat{D}(\varphi) \rangle}
+   $:
+   \textit{a)}
+      Por simetria do produto interno
+      $
+         {\langle \varphi, \hat{D}(\varphi) \rangle} =
+         {\langle \hat{D}(\varphi), \varphi \rangle}
+      $
+      e portanto $\lambda = -\lambda$,
+      que somente é possível caso $\lambda$ seja nulo;
+   \textit{b)}
+      Pela simetria conjungada do produto interno
+      $
+         {\langle \varphi, \hat{D}(\varphi) \rangle} =
+         \overline{\langle \hat{D}(\varphi), \varphi \rangle}
+      $
+      e portanto $\lambda = - \bar{\lambda}$
+      que somente é possível caso a parte real de $\lambda$ seja nula.
+\end{prova}
+
+\begin{exemplo}
+   A segunda lei de Newton para dois corpos ligados por uma mola
+   fornece o seguinte modelo:
+   Considere $\mathcal{E} = \mathbb{R}^4$,
+   onde um estado $(q^0, q^1, p_0, p_1)\in\mathcal{E}$
+   informa os deslocamentos $q^0$ e $q^1$ de cada corpo com respeito
+   à posição na qual a mola está relaxada e tammbém os momentos lineares
+   $p_0$ e $p_1$ na direção da linha reta imaginária que une os dois corpos,
+   a segunda lei de Newton é então escrita como o seguinte sistema de equações
+   $$
+      \left\{\begin{aligned}
+         \dot q^0(t) &= \frac{1}{2 m_0} p_0(t), \\
+         \dot q^1(t) &= \frac{1}{2 m_1} p_1(t), \\
+         \dot p_0(t) &= \kappa \cdot q^1(t) - \kappa \cdot q^0(t), \\
+         \dot p_1(t) &= \kappa \cdot q^0(t) - \kappa \cdot q^1(t),
+      \end{aligned}\right.
+   $$
+   onde $m_0v\in\mathbb{R}$ e $m_1\in\mathbb{R}$ representam as massas
+   de cada corpo.
+   Note que
+   $\hat{D}:(q^0, q^1, p_0, p_1)\mapsto\left(
+      \frac{1}{2 m_0} p_0(t),
+      \frac{1}{2 m_1} p_1(t),
+      \kappa \cdot q^1(t) - \kappa \cdot q^0(t),
+      \kappa \cdot q^0(t) - \kappa \cdot q^1(t)
+   \right)$
+   é simétrico com respeito ao produto interno
+   $$
+      \langle(q^0, q^1, p_0, p_1), (Q^0, Q^1, P_0, P_1)\rangle\mapsto
+      \frac{1}{m_0} p_0 P_0 + \frac{1}{m_1} p_1 P_1 +
+      \kappa \cdot (q^1 - q^0) \cdot (Q^1 - Q^0).
+   $$
+\end{exemplo}
+
+Lorem ipsum
+
+\begin{exemplo}
+   Se dois átomos contribuem cada um com um orbital para ser ocupado por
+   um elétron então pode modelar o elétron da seguinte maneira:
+   Considere $\mathcal{E} = \mathbb{C}^2$, onde cada estado
+   $(z^0, z^1)\in\mathcal{E}$ informa as probabilidades
+   $|z^0|^2$ e $|z^1|^2$ de encontrar o elétron no orbital
+   do primeiro ou do segundo átomo,
+   no modelo tight binding a evolução do estado satisfaz o sistema de equações:
+   $$
+      \left\{\begin{aligned}
+         i \hbar \, \dot z^0(t) &= \epsilon_0 \, z^0(t) + \tau \, z^1(t), \\
+         i \hbar \, \dot z^1(t) &= \tau \, z^0(t) + \epsilon_1 \, z^1(t),
+      \end{aligned}\right.
+   $$
+   onde $\epsilon_0\in\mathbb{R}$ e $\epsilon_1\in\mathbb{R}$
+   representam a energia de ligação elétron em cada orbital e
+   $\tau\in\mathbb{R}$ é a taxa de transição entre orbitais.
+   O operador $\hat{D}:(z^0, z^1)\mapsto\left(
+      \frac{\epsilon_0}{i \hbar} z^0 + \frac{\tau}{i \hbar} z^1,
+      \frac{\tau}{i \hbar} z^0 + \frac{\epsilon_1}{i \hbar} z^1
+   \right)$ é claramente antihermitiano com respeito ao produto interno usual,
+   $\langle\cdot,\cdot\rangle_{\mathbb{C}^2}$.
+\end{exemplo}
+
+\section{Formalismo hamiltoniano}
+
